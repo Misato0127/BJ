@@ -11,16 +11,19 @@ $deck->shuffle();
 $player = new Player();
 $dealer = new Dealer();
 
+echo "ブラックジャックを開始します。\n";
+
 // カードを2枚ずつ引く
 $player->drawCard($deck->drawCard());
 $player->drawCard($deck->drawCard());
 $dealer->drawCard($deck->drawCard());
 $dealer->drawCard($deck->drawCard());
 
-echo "ブラックジャックを開始します。\n";
+$player->showHand();
+$dealer->firstHand();
+
 
 while ($player->score < 21) {
-    $player->showHand();
     $choice = readline("カードを引きますか？（Y/N）: ");
     
     if (strtolower($choice) === "y") {
@@ -31,11 +34,12 @@ while ($player->score < 21) {
     }
 }
 
-$dealer->showHand();
-
-while ($dealer->score < 17) {
-    $card = $deck->drawCard();
-    $dealer->drawCard($card);
+if ($player->score <= 21) {
+  $dealer->showHand();
+  while ($dealer->score < 17) {
+      $card = $deck->drawCard();
+      $dealer->drawCard($card);
+  }
 }
 
 echo "ディーラーの引いた2枚目のカードは{$dealer->hand[1]->suit}の{$dealer->hand[1]->rank}でした。\n";

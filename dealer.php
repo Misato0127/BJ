@@ -15,4 +15,14 @@ class Dealer {
       }
       echo "ディーラーの現在の得点は{$this->score}です。\n";
   }
+
+  public function firstHand() {
+    // 最初のカードを取得
+    $firstCard = $this->hand[0];
+    
+    // 最初のカードのスートとランクを表示
+    echo "ディーラーの引いたカードは{$firstCard->suit}の{$firstCard->rank}です。\n";
+    echo "ディーラーの引いた2枚目のカードはわかりません。\n";
 }
+}
+
