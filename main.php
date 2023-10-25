@@ -36,15 +36,17 @@ while ($player->score < 21) {
     }
 }
 
+$dealer->secondHand();
+
 if ($player->score <= 21) {
   while ($dealer->score < 17) {
       $card = $deck->drawCard();
       $dealer->drawCard($card);
+      echo "ディーラーの引いた新しいカードは{$card->suit}の{$card->rank}です。\n";
   }
 }
 
-echo "ディーラーの引いた2枚目のカードは{$dealer->hand[1]->suit}の{$dealer->hand[1]->rank}でした。\n";
-echo "ディーラーの現在の得点は{$dealer->score}です。\n";
+
 
 
 echo "あなたの現在の得点は{$player->score}です。\n";

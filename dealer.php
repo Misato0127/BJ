@@ -27,5 +27,11 @@ class Dealer {
     echo "ディーラーの引いたカードは{$firstCard->suit}の{$firstCard->rank}です。\n";
     echo "ディーラーの引いた2枚目のカードはわかりません。\n";
 }
-}
 
+public function secondHand() {
+    
+    // 最初のカードのスートとランクを表示
+  echo "ディーラーの引いた2枚目のカードは{$this->hand[1]->suit}の{$this->hand[1]->rank}でした。\n";
+    echo "ディーラーの現在の得点は{$this->score}です。\n";
+}
+}
