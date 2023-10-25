@@ -9,8 +9,10 @@ class Dealer {
         $this->score += $card->value;
     }
 
-    public function showPartialHand() {
-        echo "ディーラーの引いたカードは{$this->hand[0]->suit}の{$this->hand[0]->rank}です。\n";
-        echo "ディーラーの引いた2枚目のカードはわかりません。\n";
-    }
+    public function showHand() {
+      foreach ($this->hand as $card) {
+          echo "ディーラーの引いたカードは{$card->suit}の{$card->rank}です。\n";
+      }
+      echo "ディーラーの現在の得点は{$this->score}です。\n";
+  }
 }
