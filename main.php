@@ -29,6 +29,8 @@ while ($player->score < 21) {
     if (strtolower($choice) === "y") {
         $card = $deck->drawCard();
         $player->drawCard($card);
+        echo "あなたの引いたカードは{$card->suit}の{$card->rank}です。\n";
+        echo "あなたの現在の得点は{$player->score}です。\n";
     } else {
         break;
     }
