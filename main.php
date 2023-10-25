@@ -19,25 +19,24 @@ $player->drawCard($deck->drawCard());
 $dealer->drawCard($deck->drawCard());
 $dealer->drawCard($deck->drawCard());
 
-$player->showHand();
+$player->firstHand();
 $dealer->firstHand();
 
 
 while ($player->score < 21) {
+    print "あなたの現在の得点は{$player->score}です。";
     $choice = readline("カードを引きますか？（Y/N）: ");
     
     if (strtolower($choice) === "y") {
         $card = $deck->drawCard();
         $player->drawCard($card);
         echo "あなたの引いたカードは{$card->suit}の{$card->rank}です。\n";
-        echo "あなたの現在の得点は{$player->score}です。\n";
     } else {
         break;
     }
 }
 
 if ($player->score <= 21) {
-  $dealer->showHand();
   while ($dealer->score < 17) {
       $card = $deck->drawCard();
       $dealer->drawCard($card);
@@ -45,9 +44,12 @@ if ($player->score <= 21) {
 }
 
 echo "ディーラーの引いた2枚目のカードは{$dealer->hand[1]->suit}の{$dealer->hand[1]->rank}でした。\n";
+echo "ディーラーの現在の得点は{$dealer->score}です。\n";
 
-$player->showHand();
-$dealer->showHand();
+
+echo "あなたの現在の得点は{$player->score}です。\n";
+echo "ディーラーの現在の得点は{$dealer->score}です。\n";
+
 
 if ($player->score > 21 || ($dealer->score <= 21 && $dealer->score > $player->score)) {
     echo "ディーラーの勝ちです！\n";
