@@ -15,4 +15,9 @@ class Player {
       }
       echo "あなたの現在の得点は{$this->score}です。\n";
   }
+  public function firstHand() {
+      foreach ($this->hand as $card) {
+          echo "あなたの引いたカードは{$card->suit}の{$card->rank}です。\n";
+      }
+  }
 }

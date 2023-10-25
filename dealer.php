@@ -14,6 +14,9 @@ class Dealer {
           echo "ディーラーの引いたカードは{$card->suit}の{$card->rank}です。\n";
       }
       echo "ディーラーの現在の得点は{$this->score}です。\n";
+      if ($this->score > 21) {
+        echo "ディーラーの得点が21を超えました。\n";
+    }    
   }
 
   public function firstHand() {
