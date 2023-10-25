@@ -31,7 +31,7 @@ while ($player->score < 21) {
     }
 }
 
-$dealer->showPartialHand();
+$dealer->showHand();
 
 while ($dealer->score < 17) {
     $card = $deck->drawCard();
