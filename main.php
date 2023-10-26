@@ -64,3 +64,5 @@ if ($dealer->score > 21) {
 }
 
 echo "ブラックジャックを終了します。\n";
+
+// test
