@@ -52,8 +52,10 @@ if ($player->score <= 21) {
 echo "あなたの現在の得点は{$player->score}です。\n";
 echo "ディーラーの現在の得点は{$dealer->score}です。\n";
 
-
-if ($player->score > 21 || ($dealer->score <= 21 && $dealer->score > $player->score)) {
+if ($dealer->score > 21) {
+  echo "ディーラーがバーストしました！\n";
+  echo "あなたの勝ちです！\n";
+} elseif ($player->score > 21 || ($dealer->score <= 21 && $dealer->score > $player->score)) {
     echo "ディーラーの勝ちです！\n";
 } elseif ($dealer->score > 21 || ($player->score <= 21 && $player->score > $dealer->score)) {
     echo "あなたの勝ちです！\n";
