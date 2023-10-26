@@ -46,9 +46,6 @@ if ($player->score <= 21) {
   }
 }
 
-
-
-
 echo "あなたの現在の得点は{$player->score}です。\n";
 echo "ディーラーの現在の得点は{$dealer->score}です。\n";
 
