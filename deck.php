@@ -2,6 +2,7 @@
 
 class Deck {
   public $cards = [];
+  private $drawnCards = [];
 
   public function __construct() {
       $suits = ["ハート", "ダイヤ", "スペード", "クラブ"];
@@ -13,6 +14,7 @@ class Deck {
               $this->cards[] = new Card($suit, $rank, $value);
           }
       }
+      $this->shuffle(); 
   }
 
   public function shuffle() {
@@ -20,6 +22,8 @@ class Deck {
   }
 
   public function drawCard() {
+    $card = array_shift($this->cards);
+    $this->drawnCards[] = $card; 
       return array_shift($this->cards);
   }
 }
