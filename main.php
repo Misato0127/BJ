@@ -1,9 +1,17 @@
 <?php
+error_reporting(E_ERROR);
 
-require 'Card.php';
-require 'Deck.php';
-require 'Player.php';
-require 'Dealer.php';
+require 'card.php';
+require 'deck.php';
+require 'player.php';
+require 'dealer.php';
+
+use Blackjack\Card;
+use Blackjack\Deck;
+use Blackjack\Player;
+use Blackjack\Dealer;
+
+$card = new Card($suit, $rank, $value);
 
 $deck = new Deck();
 $deck->shuffle();
@@ -39,19 +47,19 @@ while ($player->score < 21) {
 $dealer->secondHand();
 
 if ($player->score <= 21) {
-  while ($dealer->score < 17) {
-      $card = $deck->drawCard();
-      $dealer->drawCard($card);
-      echo "ディーラーの引いた新しいカードは{$card->suit}の{$card->rank}です。\n";
-  }
+    while ($dealer->score < 17) {
+        $card = $deck->drawCard();
+        $dealer->drawCard($card);
+        echo "ディーラーの引いた新しいカードは{$card->suit}の{$card->rank}です。\n";
+    }
 }
 
 echo "あなたの現在の得点は{$player->score}です。\n";
 echo "ディーラーの現在の得点は{$dealer->score}です。\n";
 
 if ($dealer->score > 21) {
-  echo "ディーラーがバーストしました！\n";
-  echo "あなたの勝ちです！\n";
+    echo "ディーラーがバーストしました！\n";
+    echo "あなたの勝ちです！\n";
 } elseif ($player->score > 21 || ($dealer->score <= 21 && $dealer->score > $player->score)) {
     echo "ディーラーの勝ちです！\n";
 } elseif ($dealer->score > 21 || ($player->score <= 21 && $player->score > $dealer->score)) {
@@ -61,5 +69,3 @@ if ($dealer->score > 21) {
 }
 
 echo "ブラックジャックを終了します。\n";
-
-// test
